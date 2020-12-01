@@ -3,6 +3,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('keyfile')
+            storePassword 'h5tv2020'
+            keyPassword '2020h5tv'
+            keyAlias 'tvkey'
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
