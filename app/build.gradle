@@ -5,10 +5,20 @@ plugins {
 android {
     signingConfigs {
         debug {
-            storeFile file('keyfile')
-            storePassword 'h5tv2020'
-            keyPassword '2020h5tv'
-            keyAlias 'tvkey'
+            storeFile file('keydebug')
+            storePassword 'tv1234'
+            keyPassword 'tv1234'
+            keyAlias 'key0'
+        }
+        release {
+            storeFile file(RELEASE_STORE_FILE)
+            storePassword RELEASE_STORE_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+
+            // Optional, specify signing versions used
+            v1SigningEnabled true
+            v2SigningEnabled true
         }
     }
     compileSdkVersion 30
@@ -26,9 +36,9 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
+
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
